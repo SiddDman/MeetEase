@@ -1,3 +1,4 @@
+import CallListCard from '@/components/CallListCard'
 import React from 'react'
 
 const Recordings = () => {
@@ -6,7 +7,8 @@ const Recordings = () => {
       <h1 className='text-3xl font-bold'>
         Recordings
       </h1>
-    </section>   )
+      <CallListCard type='recordings' />
+    </section>)
 }
 
 export default Recordings
