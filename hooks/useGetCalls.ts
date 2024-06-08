@@ -47,10 +47,13 @@ export const useGetCalls = () => {
         return startsAt && new Date(startsAt) > now
     })
 
-    const callRecordings = {};
+    const todaysCalls = calls?.filter(({ state: { startsAt } }: Call) => {
+        return startsAt && new Date().toLocaleDateString() === new Date(startsAt).toLocaleDateString() && startsAt > now
+    })
+
 
     return {
-        endedCalls, upcomingCalls, callRecordings: calls, loading,
+        endedCalls, upcomingCalls, todaysCalls, callRecordings: calls, loading,
     }
 }
 

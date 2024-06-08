@@ -1,9 +1,26 @@
+"use client"
+import Loader from "@/components/Loader";
+import MeetingCard from "@/components/MeetingCard";
 import MeetingTypeList from "@/components/MeetingTypeList";
+import { useGetCalls } from "@/hooks/useGetCalls";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const now = new Date();
+  const router = useRouter()
   const time = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-  const date = (new Intl.DateTimeFormat('en-IN', { dateStyle: 'full' })).format(now)
+  const dateToday = (new Intl.DateTimeFormat('en-IN', { dateStyle: 'full' })).format(now)
+  const { todaysCalls, loading } = useGetCalls()
+
+  const getCalls = () => {
+    return todaysCalls;
+  }
+
+  const calls = getCalls();
+
+  if (loading)
+    return <Loader />
+
 
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
@@ -17,12 +34,34 @@ const Home = () => {
               {time}
             </h1>
             <p className='text-lg font-medium text-sky-1 lg:text-2xl'>
-              {date}
+              {dateToday}
             </p>
           </div>
         </div>
       </div>
       <MeetingTypeList />
+
+      {/* Todays Upcoming Meetings */}
+      {calls && calls.length > 0 ? (<h1 className="text-3xl font-extrabold">Todays Upcoming Meetings</h1>) : (<></>)}
+      <div className='grid grid-cols-1 gap-5 xl:grid-cols-2'>
+        {calls && calls.length > 0 ? calls.map((meeting) => (
+          <MeetingCard
+            key={meeting?.id}
+            title={meeting.state?.custom?.desc?.substring(0, 30)}
+            date={dateToday}
+            icon='/icons/upcoming.svg'
+            isPreviousMeeting={false}
+            buttonIcon1={undefined}
+            buttonText='Start'
+            handleClick={() => router.push(`/meeting/${(meeting).id}`)}
+            link={`${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
+          />
+        )) : (
+          <h1>
+            No Meetings Today
+          </h1>
+        )}
+      </div>
     </section>
   )
 }

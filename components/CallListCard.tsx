@@ -1,10 +1,10 @@
 "use client"
+
 import { useGetCalls } from '@/hooks/useGetCalls'
 import { Call, CallRecording } from '@stream-io/video-react-sdk'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import MeetingCard from './MeetingCard'
-import { Lacquer } from 'next/font/google'
 import Loader from './Loader'
 import { useToast } from './ui/use-toast'
 
@@ -44,7 +44,6 @@ const CallListCard = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) =
         const fetchRecordings = async () => {
             try {
                 const callData = await Promise.all(callRecordings.map((meeting) => meeting.queryRecordings()))
-
                 const recordings = callData.filter(call => call.recordings.length > 0).flatMap(call => call.recordings)
 
                 setRecordings(recordings);
@@ -54,7 +53,7 @@ const CallListCard = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) =
         }
         if (type === 'recordings')
             fetchRecordings()
-    }, [type, callRecordings])
+    }, [type, callRecordings, toast])
 
     const calls = getCalls();
     const noCallsMessage = getNoCallsMessage()
