@@ -12,7 +12,7 @@ import ReactDatePicker from 'react-datepicker'
 
 const MeetingTypeList = () => {
     const router = useRouter();
-    const [meetingState, setMeetingState] = useState<'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined>()
+    const [meetingState, setMeetingState] = useState<'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined>(undefined)
 
     const { user } = useUser();
     const client = useStreamVideoClient();
@@ -72,11 +72,18 @@ const MeetingTypeList = () => {
                 className="bg-orange-1"
             />
             <HomeCard
+                img="/icons/join-meeting.svg"
+                title="Join Meeting"
+                desc="Join a Meeting via an invitation link."
+                handleClick={() => setMeetingState('isJoiningMeeting')}
+                className="bg-blue-1"
+            />
+            <HomeCard
                 img="/icons/schedule.svg"
                 title="Schedule Meeting"
                 desc="Plan your Meetings."
                 handleClick={() => setMeetingState('isScheduleMeeting')}
-                className="bg-blue-1"
+                className="bg-yellow-1"
             />
             <HomeCard
                 img="/icons/recordings.svg"
@@ -84,13 +91,6 @@ const MeetingTypeList = () => {
                 desc="Check out your recorded Meetings."
                 handleClick={() => router.push('/recordings')}
                 className="bg-purple-1"
-            />
-            <HomeCard
-                img="/icons/join-meeting.svg"
-                title="Join Meeting"
-                desc="Join a Meeting via an invitation link."
-                handleClick={() => setMeetingState('isJoiningMeeting')}
-                className="bg-yellow-1"
             />
             {!callDetails ? (
                 <MeetingModal
