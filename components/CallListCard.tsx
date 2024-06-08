@@ -67,8 +67,8 @@ const CallListCard = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) =
             {calls && calls.length > 0 ? calls.map((meeting: Call | CallRecording) => (
                 <MeetingCard
                     key={(meeting as Call)?.id}
-                    title={(meeting as Call).state?.custom.desc.substring(0, 30) || (meeting as CallRecording).filename.substring(0, 25) || 'No Description'}
-                    date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as CallRecording).start_time.toLocaleString()}
+                    title={(meeting as Call).state?.custom?.desc?.substring(0, 30) || (meeting as CallRecording)?.filename?.substring(0, 25) || 'Personal Meeting'}
+                    date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as CallRecording)?.start_time.toLocaleString()}
                     icon={
                         type === 'ended' ? '/icons/previous.svg' :
                             type === 'upcoming' ? '/icons/upcoming.svg' :

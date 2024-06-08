@@ -49,6 +49,7 @@ const MeetingTypeList = () => {
                     }
                 }
             })
+
             setCallDetails(call);
             if (!values.desc)
                 router.push(`/meeting/${call.id}`)
@@ -72,24 +73,24 @@ const MeetingTypeList = () => {
                 className="bg-orange-1"
             />
             <HomeCard
-                img="/icons/join-meeting.svg"
-                title="Join Meeting"
-                desc="Join a Meeting via an invitation link."
-                handleClick={() => setMeetingState('isJoiningMeeting')}
-                className="bg-blue-1"
-            />
-            <HomeCard
                 img="/icons/schedule.svg"
                 title="Schedule Meeting"
                 desc="Plan your Meetings."
                 handleClick={() => setMeetingState('isScheduleMeeting')}
-                className="bg-yellow-1"
+                className="bg-blue-1"
             />
             <HomeCard
                 img="/icons/recordings.svg"
                 title="View Recordings"
                 desc="Check out your recorded Meetings."
                 handleClick={() => router.push('/recordings')}
+                className="bg-yellow-1"
+            />
+            <HomeCard
+                img="/icons/join-meeting.svg"
+                title="Join Meeting"
+                desc="Join a Meeting via an invitation link."
+                handleClick={() => setMeetingState('isJoiningMeeting')}
                 className="bg-purple-1"
             />
             {!callDetails ? (
