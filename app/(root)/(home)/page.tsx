@@ -57,7 +57,7 @@ const Home = () => {
             link={`${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
           />
         )) : (
-          <h1>
+          <h1 className="text-3xl font-extrabold">
             No Meetings Today
           </h1>
         )}
