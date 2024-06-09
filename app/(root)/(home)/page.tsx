@@ -18,17 +18,31 @@ const Home = () => {
 
   const calls = getCalls();
 
+  // Get the time of upcoming meeting
+  const firstMeetingTime = calls && calls.length > 0
+    ? new Date(calls[0]?.state.startsAt!).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
+    : "null";
+
   if (loading)
     return <Loader />
-
 
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
       <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
         <div className="flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11">
-          <h2 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>
-            Upcoming Meeting at:12:00 PM
-          </h2>
+          {calls && calls.length > 0 ?
+            (
+              <h2 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>
+                Upcoming Meeting at: {firstMeetingTime}
+              </h2>
+            )
+            :
+            (
+              <h2 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>
+                No Meetings Today
+              </h2>
+            )
+          }
           <div className='flex flex-col gap-2'>
             <h1 className='text-4xl font-extrabold lg:text-7xl'>
               {time}

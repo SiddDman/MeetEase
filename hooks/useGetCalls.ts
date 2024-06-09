@@ -33,6 +33,7 @@ export const useGetCalls = () => {
                 setLoading(false)
             }
         }
+
         loadCalls()
     }, [client, user?.id])
 
@@ -50,7 +51,6 @@ export const useGetCalls = () => {
     const todaysCalls = calls?.filter(({ state: { startsAt } }: Call) => {
         return startsAt && new Date().toLocaleDateString() === new Date(startsAt).toLocaleDateString() && startsAt > now
     })
-
 
     return {
         endedCalls, upcomingCalls, todaysCalls, callRecordings: calls, loading,
