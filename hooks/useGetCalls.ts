@@ -16,7 +16,7 @@ export const useGetCalls = () => {
             setLoading(true)
             try {
                 const { calls } = await client.queryCalls({
-                    sort: [{ field: 'starts_at', direction: -1 }],
+                    sort: [{ field: 'starts_at', direction: 1 }],
                     filter_conditions: {
                         starts_at: { $exists: true },
                         $or: [
@@ -42,7 +42,6 @@ export const useGetCalls = () => {
     const endedCalls = calls?.filter(({ state: { startsAt, endedAt } }: Call) => {
         return (startsAt && new Date(startsAt) < now || !!endedAt)
     })
-
 
     const upcomingCalls = calls?.filter(({ state: { startsAt } }: Call) => {
         return startsAt && new Date(startsAt) > now
