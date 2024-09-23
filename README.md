@@ -34,7 +34,7 @@ To set up the project locally, follow these steps:
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/meetease.git
+    git clone https://github.com/SiddDman/meetease.git
     cd meetease
     ```
 
@@ -58,9 +58,9 @@ To set up the project locally, follow these steps:
     npm run dev
     ```
 
-    The application will be running on `http://localhost:3000`.
+    The application will be running on ```http://localhost:3000```.
 
-## Live Deployment
+## Deployment
 You can view the live version of this project at [MeetEase](https://meet-ease-phi.vercel.app/).
 
 ## Future Improvements
