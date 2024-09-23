@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MeetEase
 
-## Getting Started
+MeetEase is an enterprise-ready video conferencing application built with Next.js, TypeScript, and Tailwind CSS. It provides functionalities for instant meetings, scheduled meetings, and recording, ensuring high-quality video communication. With user authentication and management powered by Clerk, MeetEase offers a secure and smooth user experience across all devices.
 
-First, run the development server:
+## Table of Contents
+- [Features](#features)
+- [Stream SDK](#stream-sdk)
+- [Project Setup](#project-setup)
+- [Deployment](#deployment)
+- [Future Improvements](#future-improvements)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Instant Meetings:** Host on-demand meetings with a single click.
+- **Scheduled Meetings:** Create and manage scheduled meetings.
+- **Recording Functionality:** Record meetings and access them for future use.
+- **Meeting History:** View upcoming meetings, past meetings, and recorded sessions.
+- **Personal Room:** Access your own dedicated meeting room.
+- **User Authentication:** Secure sign-up, sign-in, and protected routes using Clerk.
+- **Responsive Design:** Optimized for a seamless experience across mobile and desktop platforms.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stream SDK
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+MeetEase integrates Stream's SDK to handle video meetings and manage audio-video input. The Stream SDK ensures:
+- **High-quality video and audio:** Provides reliable streaming capabilities for video conferencing.
+- **Meeting Management:** Allows users to create, join, and manage video meetings seamlessly.
+- **Audio-Video Control:** Manages various audio and video inputs, ensuring optimal quality for all participants.
 
-## Learn More
+For more details on the Stream SDK, visit the [official documentation](https://getstream.io/docs/).
 
-To learn more about Next.js, take a look at the following resources:
+## Project Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To set up the project locally, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/meetease.git
+    cd meetease
+    ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up environment variables:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Create a `.env.local` file in the root directory and add the required environment variables:
+
+    ```bash
+    NEXT_PUBLIC_CLERK_FRONTEND_API= <your-clerk-api-key>
+    CLERK_API_KEY= <your-backend-clerk-api-key>
+    STREAM_API_KEY= <your-stream-api-key>
+    ```
+
+4. **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+    The application will be running on `http://localhost:3000`.
+
+## Live Deployment
+You can view the live version of this project at [MeetEase](https://meet-ease-phi.vercel.app/).
+
+## Future Improvements
+
+- **Chat Integration:** Adding real-time messaging for participants during meetings.
+- **Custom Backgrounds:** Allowing users to set custom video backgrounds.
+- **Advanced Analytics:** Providing insights and statistics on meetings, including duration and participant feedback.
+- **Enhanced Security:** Additional encryption for meeting recordings and content sharing.
