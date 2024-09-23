@@ -1,4 +1,4 @@
-# MeetEase
+# MeetEase - A Video Conferencing Application
 
 MeetEase is an enterprise-ready video conferencing application built with Next.js, TypeScript, and Tailwind CSS. It provides functionalities for instant meetings, scheduled meetings, and recording, ensuring high-quality video communication. With user authentication and management powered by Clerk, MeetEase offers a secure and smooth user experience across all devices.
 
